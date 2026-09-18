@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10263a">
+    <title>Relatório de clientes</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/app.js" defer></script>
+</head>
+<body>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <main class="container">
+        <div id="status" class="status" role="status" aria-live="polite">Carregando relatório…</div>
+
+        <section id="relatorio" class="report" hidden aria-label="Dados do relatório">
+            <div class="section-heading"><h2>Visão geral</h2></div>
+            <div class="metrics" aria-label="Indicadores">
+                <article class="metric"><span class="metric-label">Clientes cadastrados</span><strong id="total-clients">—</strong><span class="metric-foot">registros válidos</span></article>
+                <article class="metric"><span class="metric-label">Cidades atendidas</span><strong id="total-cities">—</strong><span class="metric-foot">localidades distintas</span></article>
+                <article class="metric metric-featured"><span class="metric-label">Cidade com mais clientes</span><strong id="top-city">—</strong><span id="top-city-count" class="metric-foot">—</span></article>
+            </div>
+
+            <section class="directory" aria-labelledby="directory-title">
+                <div class="directory-heading">
+                    <div><p class="eyebrow">DIRETÓRIO</p><h2 id="directory-title">Lista de clientes</h2></div>
+                    <div class="directory-actions" aria-label="Ações de dados">
+                        <button id="import-button" class="action-button action-button-secondary" type="button">Importar clientes</button>
+                        <button id="export-button" class="action-button" type="button">Exportar CSV</button>
+                        <input id="import-file" type="file" accept=".csv,.json,text/csv,application/json" hidden>
+                    </div>
+                </div>
+                <div class="filters">
+                    <div class="field search-field"><label for="search">Buscar cliente</label><input id="search" type="search" placeholder="Nome, email ou telefone" autocomplete="off"></div>
+                    <div class="field city-field"><label for="city-filter">Cidade</label><select id="city-filter"><option value="">Todas as cidades</option></select></div>
+                    <div class="field page-size"><label for="page-size">Clientes por página</label><select id="page-size"><option value="10" selected>10</option><option value="25">25</option><option value="50">50</option></select></div>
+                </div>
+                <div id="empty-state" class="empty-state" hidden></div>
+                <div id="table-wrap" class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" data-sort-header="nome" aria-sort="ascending"><button class="sort-button" type="button" data-sort-key="nome">Nome <span class="sort-indicator" aria-hidden="true">↑</span></button></th>
+                                <th scope="col" data-sort-header="cidade" aria-sort="none"><button class="sort-button" type="button" data-sort-key="cidade">Cidade <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                                <th scope="col" data-sort-header="email" aria-sort="none"><button class="sort-button" type="button" data-sort-key="email">Email <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                                <th scope="col" data-sort-header="telefone" aria-sort="none"><button class="sort-button" type="button" data-sort-key="telefone">Telefone <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody id="client-rows"></tbody>
+                    </table>
+                </div>
+                <div id="pagination" class="pagination" hidden aria-label="Paginação da lista de clientes">
+                    <p id="result-count" class="result-count"></p>
+                    <div class="page-controls"><button id="previous-page" class="page-button page-arrow" type="button" aria-label="Página anterior">‹</button><div id="page-numbers" class="page-numbers"></div><button id="next-page" class="page-button page-arrow" type="button" aria-label="Próxima página">›</button></div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
