@@ -2,6 +2,8 @@
 
 Aplicação em PHP, HTML, CSS e JavaScript, sem banco de dados. Requer PHP 8.1 ou superior e Composer.
 
+Vídeo de demonstração: [assistir no YouTube](https://youtu.be/qOULRdajxuA)
+
 ## Executar
 
 Na pasta do projeto, execute:
